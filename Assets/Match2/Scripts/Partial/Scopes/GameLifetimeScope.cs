@@ -1,25 +1,38 @@
-using MessagePipe;
+using System.Collections.Generic;
+using Match2.Partial.Gameplay;
+using Match2.Partial.Installers;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-public class GameLifetimeScope : LifetimeScope
+namespace Match2.Partial.Scopes
 {
-    protected override void Configure(IContainerBuilder builder)
+    public class GameLifetimeScope : LifetimeScope
     {
-        // RegisterMessagePipe returns options.
-        var options = builder.RegisterMessagePipe(/* configure option */);
-        
-        // Setup GlobalMessagePipe to enable diagnostics window and global function
-        builder.RegisterBuildCallback(c => GlobalMessagePipe.SetProvider(c.AsServiceProvider()));
+        [SerializeField] private CommonSceneObjectsInstaller commonSceneObjectsInstaller;
+        [SerializeField] private GUIInstaller guiInstaller;
 
-        // RegisterMessageBroker: Register for IPublisher<T>/ISubscriber<T>, includes async and buffered.
-        builder.RegisterMessageBroker<int>(options);
+        private List<IInstaller> installers;
 
-        // also exists RegisterMessageBroker<TKey, TMessage>, RegisterRequestHandler, RegisterAsyncRequestHandler
-
-        // RegisterMessageHandlerFilter: Register for filter, also exists RegisterAsyncMessageHandlerFilter, Register(Async)RequestHandlerFilter
-        //builder.RegisterMessageHandlerFilter<MyFilter<int>>();
-
-        builder.RegisterEntryPoint<MessagePipeDemo>(Lifetime.Singleton);
+        protected override void Configure(IContainerBuilder builder)
+        {
+            Initialize();
+            
+            foreach (var installer in installers)
+            {
+                installer.Install(builder);
+            }
+            
+            builder.RegisterEntryPoint<GameDemo>(Lifetime.Singleton);
+        }
+        private void Initialize()
+        {
+            installers = new List<IInstaller>
+            {
+                commonSceneObjectsInstaller,
+                guiInstaller,
+                new MessagePipeInstaller()
+            };
+        }
     }
 }
