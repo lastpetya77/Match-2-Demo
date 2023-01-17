@@ -12,27 +12,39 @@ namespace Match2.Partial.Scopes
         [SerializeField] private CommonSceneObjectsInstaller commonSceneObjectsInstaller;
         [SerializeField] private GUIInstaller guiInstaller;
 
-        private List<IInstaller> installers;
+        private List<IInstaller> unityBehaviorInstallers;
+        private List<IInstaller> simpleInstallers;
 
         protected override void Configure(IContainerBuilder builder)
         {
             Initialize();
-            
-            foreach (var installer in installers)
-            {
-                installer.Install(builder);
-            }
+
+            Install(builder, unityBehaviorInstallers);
+            Install(builder, simpleInstallers);
             
             builder.RegisterEntryPoint<GameDemo>(Lifetime.Singleton);
         }
         private void Initialize()
         {
-            installers = new List<IInstaller>
+            unityBehaviorInstallers = new List<IInstaller>
             {
                 commonSceneObjectsInstaller,
-                guiInstaller,
-                new MessagePipeInstaller()
+                guiInstaller
             };
+
+            simpleInstallers = new List<IInstaller>
+            {
+                new MessagePipeInstaller(),
+                new GameStateFactoriesInstaller()
+            };
+        }
+
+        private void Install(IContainerBuilder builder, List<IInstaller> installers)
+        {
+            foreach (var installer in installers)
+            {
+                installer.Install(builder);
+            }
         }
     }
 }
