@@ -1,6 +1,6 @@
 namespace Match2.Partial.Gameplay.Static
 {
-    public class GoalData 
+    public struct GoalData 
     {
         public ItemData ItemData;
         public int Amount;
