@@ -1,5 +1,6 @@
 using Match2.Partial.Gameplay.GameStates;
 using Match2.Partial.Gameplay.GameStates.Factories;
+using Match2.Partial.Gameplay.GameStates.States;
 using VContainer;
 using VContainer.Unity;
 
@@ -11,6 +12,9 @@ namespace Match2.Partial.Installers
         {
             builder.Register<GameStateMachine>(Lifetime.Singleton);
             builder.Register<GameIdleStateFactory>(Lifetime.Scoped);
+            builder.Register<GameLevelClearState>(Lifetime.Scoped);
+            
+
         }
     }
 }

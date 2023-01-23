@@ -3,24 +3,24 @@ using UnityEngine;
 
 namespace Match2.Partial.Gameplay.GameStates.States
 {
-    public class GameIdleState : GameState
+    public class GameLevelClearState : GameState
     {
         private LevelLoader levelLoader;
         
-        public GameIdleState(GameStateMachine gameStateMachine, LevelLoader levelLoader) : base(gameStateMachine)
+        public GameLevelClearState(GameStateMachine gameStateMachine, LevelLoader levelLoader) : base(gameStateMachine)
         {
             this.levelLoader = levelLoader;
         }
 
-        public override async void Enter()
+        public override void Enter()
         {
-            Debug.Log($"GameIdleState Enter");
-            await levelLoader.Load();
+            Debug.Log($"GameLevelClearState Enter");
+            levelLoader.Unload();
         }
 
-        public  override void Update()
+        public override void Update()
         {
-
+            
         }
 
         public override void Exit()

@@ -4,7 +4,7 @@
     {
         public IState CurrentState { get; private set; }
 
-        protected void Initialize(IState state)
+        protected virtual void Initialize(IState state)
         {
             CurrentState = state;
             state.Enter();

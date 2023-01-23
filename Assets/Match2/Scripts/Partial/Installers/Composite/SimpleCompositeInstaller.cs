@@ -11,6 +11,7 @@ namespace Match2.Partial.Installers.Composite
             return new List<IInstaller>
             {
                 new MessagePipeInstaller(),
+                new MainInstaller(),
                 new GameStateFactoriesInstaller()
             };
         }
