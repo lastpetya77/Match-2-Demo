@@ -1,4 +1,5 @@
-﻿using VContainer;
+﻿using Match2.Partial.Gameplay;
+using VContainer;
 using VContainer.Unity;
 
 namespace Match2.Partial.Scopes
@@ -7,7 +8,8 @@ namespace Match2.Partial.Scopes
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            
+            builder.RegisterEntryPoint<TestEntry>(Lifetime.Singleton);
+
         }
     }
 }

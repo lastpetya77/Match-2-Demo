@@ -17,7 +17,7 @@ namespace Match2.Partial.Scopes
             var simpleCompositeInstaller = new SimpleCompositeInstaller();
             simpleCompositeInstaller.Install(builder);
             
-            builder.RegisterEntryPoint<GameDemo>(Lifetime.Singleton);
+            builder.RegisterEntryPoint<MainMenuEntryPoint>(Lifetime.Singleton);
         }
     }
 }

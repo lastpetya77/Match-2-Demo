@@ -12,12 +12,16 @@ namespace Match2.Partial.Gameplay.GameStates
         private readonly Dictionary<Type, GameState> gameStates = new Dictionary<Type, GameState>();
 
         [Inject] private GameIdleStateFactory gameIdleStateFactory;
+        [Inject] private GameLevelCreationStateFactory gameLevelCreationStateFactory;
+        [Inject] private GameLevelSpawnStateFactory gameLevelSpawnStateFactory;
         [Inject] private GameLevelClearStateFactory gameLevelClearStateFactory;
         
         public override void Initialize()
         {
             var idleState = gameIdleStateFactory.Create(this);
             AddState(idleState);
+            AddState(gameLevelCreationStateFactory.Create(this));
+            AddState(gameLevelSpawnStateFactory.Create(this));
             AddState(gameLevelClearStateFactory.Create(this));
 
             base.Initialize(idleState);

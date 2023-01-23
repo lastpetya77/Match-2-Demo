@@ -5,17 +5,17 @@ namespace Match2.Partial.Gameplay.GameStates.States
 {
     public class GameIdleState : GameState
     {
-        private LevelLoader levelLoader;
+        private SceneLoader sceneLoader;
         
-        public GameIdleState(GameStateMachine gameStateMachine, LevelLoader levelLoader) : base(gameStateMachine)
+        public GameIdleState(GameStateMachine gameStateMachine, SceneLoader sceneLoader) : base(gameStateMachine)
         {
-            this.levelLoader = levelLoader;
+            this.sceneLoader = sceneLoader;
         }
 
         public override async void Enter()
         {
             Debug.Log($"GameIdleState Enter");
-            await levelLoader.Load();
+            gameStateMachine.SetState<GameLevelCreationState>();
         }
 
         public  override void Update()

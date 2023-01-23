@@ -4,7 +4,7 @@ namespace Match2.Partial.Gameplay.GameStates.States
 {
     public abstract class GameState : IState
     {
-        private readonly  GameStateMachine gameStateMachine;
+        protected readonly  GameStateMachine gameStateMachine;
         protected GameStateMachine GameStateMachine => gameStateMachine;
         protected GameState(GameStateMachine gameStateMachine)
         {

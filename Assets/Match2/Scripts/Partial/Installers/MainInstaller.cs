@@ -8,6 +8,7 @@ namespace Match2.Partial.Installers
     {
         public void Install(IContainerBuilder builder)
         {
+            builder.Register<SceneLoader>(Lifetime.Scoped);
             builder.Register<LevelLoader>(Lifetime.Scoped);
         }
     }

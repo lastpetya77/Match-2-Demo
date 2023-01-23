@@ -5,13 +5,13 @@ namespace Match2.Partial.Gameplay.GameStates.Factories
 {
     public class GameIdleStateFactory
     {
-        private LevelLoader levelLoader;
+        private SceneLoader sceneLoader;
         
-        public GameIdleStateFactory(LevelLoader levelLoader)
+        public GameIdleStateFactory(SceneLoader sceneLoader)
         {
-            this.levelLoader = levelLoader;
+            this.sceneLoader = sceneLoader;
         }
         
-        public GameIdleState Create(GameStateMachine gameStateMachine) => new GameIdleState(gameStateMachine, levelLoader);
+        public GameIdleState Create(GameStateMachine gameStateMachine) => new GameIdleState(gameStateMachine, sceneLoader);
     }
 }

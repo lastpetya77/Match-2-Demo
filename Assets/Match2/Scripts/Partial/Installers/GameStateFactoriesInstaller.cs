@@ -11,8 +11,9 @@ namespace Match2.Partial.Installers
         {
             builder.Register<GameStateMachine>(Lifetime.Singleton);
             builder.Register<GameIdleStateFactory>(Lifetime.Scoped);
+            builder.Register<GameLevelCreationStateFactory>(Lifetime.Scoped);
+            builder.Register<GameLevelSpawnStateFactory>(Lifetime.Scoped);
             builder.Register<GameLevelClearStateFactory>(Lifetime.Scoped);
-            
         }
     }
 }
