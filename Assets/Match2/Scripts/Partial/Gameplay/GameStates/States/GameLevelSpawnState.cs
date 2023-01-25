@@ -1,5 +1,4 @@
-﻿using Cysharp.Threading.Tasks;
-using Match2.Common.UI.Windows;
+﻿using Match2.Common.UI.Windows;
 using Match2.Partial.Loading;
 using Match2.Partial.UI;
 using UnityEngine;

@@ -1,3 +1,4 @@
+using Match2.Partial.Messages;
 using MessagePipe;
 using VContainer;
 using VContainer.Unity;
@@ -16,7 +17,8 @@ namespace Match2.Partial.Installers
 
             // RegisterMessageBroker: Register for IPublisher<T>/ISubscriber<T>, includes async and buffered.
             builder.RegisterMessageBroker<int>(options);
-
+            
+            builder.RegisterMessageBroker<TestEvent>(options);
         }
     }
 }

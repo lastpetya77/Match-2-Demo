@@ -19,6 +19,7 @@ namespace Match2.Partial.Gameplay.GameStates.States
         public override async void Enter()
         {
             Debug.Log($"GameLevelCreationState Enter");
+            
             await sceneLoader.LoadSceneAsync(SceneType.Game);
             await levelLoader.Load();
             
