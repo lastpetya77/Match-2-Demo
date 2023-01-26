@@ -8,5 +8,6 @@ namespace Match2.Partial.Gameplay.Static
         public int LevelIndex;
         public List<GoalData> Goals;
         public CellType[,] CellsData;
+        public ItemData[,] ItemsData;
     }
 }

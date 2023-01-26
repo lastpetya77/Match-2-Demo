@@ -23,8 +23,11 @@ namespace Match2.Partial.Gameplay.Static
         
         private LevelData CreateTemporaryLevelData()
         {
-            var matrix = CreateTemporaryLevelMatrix();
-            var cellsData = CreateCellsData(matrix);
+            var cellsMatrix = CreateTemporaryLevelMatrix();
+            var colorMatrix = CreateTemporaryColorMatrix();
+            
+            var cellsData = CreateCellsData(cellsMatrix);
+            var itemsData = CreateItemsData(colorMatrix);
             
             var itemData = new ItemData
             {
@@ -43,7 +46,8 @@ namespace Match2.Partial.Gameplay.Static
             {
                 LevelIndex = 1,
                 Goals = goals,
-                CellsData = cellsData
+                CellsData = cellsData,
+                ItemsData = itemsData
             };
 
             return levelData;
@@ -63,6 +67,20 @@ namespace Match2.Partial.Gameplay.Static
             return matrix;
         }
 
+        private int[,] CreateTemporaryColorMatrix()
+        {
+            var matrix = new int[5, 7]
+            {
+                { 3, 3, 3, 4, 2, 2, 0 },
+                { 4, 3, 3, 4, 2, 4, 0 },
+                { 2, 4, 0, 4, 2, 4, 0 },
+                { 2, 2, 2, 4, 2, 2, 0 },
+                { 3, 3, 4, 4, 4, 3, 0 }
+            };
+            
+            return matrix;
+        }        
+        
         private CellType[,] CreateCellsData(int[,] matrix)
         {
             var cellsData = new CellType[5, 7];
@@ -80,6 +98,30 @@ namespace Match2.Partial.Gameplay.Static
             
             return cellsData;
         }
-        
+
+        private ItemData[,] CreateItemsData(int[,] matrix)
+        {
+            var itemsData = new ItemData[5, 7];
+            for (int y = 0; y < matrix.GetLength(1); y++)
+            {
+                for (int x = 0; x < matrix.GetLength(0); x++)
+                {
+                    var currentValue = matrix[x, y];
+                    if (currentValue == 0)
+                    {
+                        continue;
+                    }
+                    
+                    var currentItemData = new ItemData
+                    {
+                        Color = (ItemColor)currentValue,
+                        Type = ItemType.Default
+                    };
+                    itemsData[x, y] = currentItemData;
+                }
+            }
+
+            return itemsData;
+        } 
     }
 }
