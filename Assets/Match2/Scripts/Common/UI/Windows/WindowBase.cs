@@ -12,9 +12,9 @@ namespace Match2.Common.UI.Windows
 {
         [SerializeField] private RectTransform animatedRectTransform;
         [SerializeField] private FadeTransitionConfig fadeTransitionConfig;
-        
-        [Inject] private WindowPresenter windowPresenter;
-        [Inject] private WindowsContainer windowsContainer;
+
+        private WindowPresenter windowPresenter;
+        private WindowsContainer windowsContainer;
 
         protected CanvasGroup canvasGroup;
         
@@ -29,6 +29,13 @@ namespace Match2.Common.UI.Windows
             windowTransition?.Destroy();
         }
 
+        [Inject]
+        public void Construct(WindowPresenter windowPresenter, WindowsContainer windowsContainer)
+        {
+            this.windowPresenter = windowPresenter;
+            this.windowsContainer = windowsContainer;
+        }
+        
         public virtual void Initialize()
         {
             RectTransform = GetComponent<RectTransform>();
@@ -78,8 +85,8 @@ namespace Match2.Common.UI.Windows
             if (gameObject == null) return;
 
             canvasGroup.interactable = false;
-            windowTransition.Hide(YieldClose);
             
+            windowTransition.Hide(YieldClose);
             windowPresenter.Close(this);
         }
         

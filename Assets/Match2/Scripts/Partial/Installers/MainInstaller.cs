@@ -1,4 +1,5 @@
-﻿using Match2.Partial.Loading;
+﻿using Match2.Partial.Gameplay.Static;
+using Match2.Partial.Loading;
 using VContainer;
 using VContainer.Unity;
 
@@ -8,6 +9,7 @@ namespace Match2.Partial.Installers
     {
         public void Install(IContainerBuilder builder)
         {
+            builder.Register<IStaticDataProvider, DefaultStaticDataProvider>(Lifetime.Scoped);
             builder.Register<SceneLoader>(Lifetime.Scoped);
             builder.Register<LevelLoader>(Lifetime.Scoped);
         }

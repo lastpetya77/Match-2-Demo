@@ -7,5 +7,7 @@ namespace Match2.Partial.Gameplay.Static
         List<LevelData> Levels { get; }
 
         List<ItemData> ItemDatas { get; }
+
+        LevelData CreateTemporaryLevelData();
     }
 }

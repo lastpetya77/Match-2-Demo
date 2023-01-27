@@ -21,7 +21,7 @@ namespace Match2.Partial.Gameplay.Static
             Levels.Add(firstLevel);
         }
         
-        private LevelData CreateTemporaryLevelData()
+        public LevelData CreateTemporaryLevelData()
         {
             var cellsMatrix = CreateTemporaryLevelMatrix();
             var colorMatrix = CreateTemporaryColorMatrix();
