@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using Match2.Partial.Gameplay.Enums;
 using Match2.Partial.Gameplay.Factories;
-using UnityEngine;
-using VContainer;
 
 namespace Match2.Partial.Gameplay.Static
 {
@@ -102,7 +100,7 @@ namespace Match2.Partial.Gameplay.Static
                     var currentValue = matrix[x, y];
                     cellsData[x, y] = cellTypeConverter.Create(currentValue);
                     
-                    Debug.Log($"[{x}][{y}] = {currentValue.ToString()}");
+                    //Debug.Log($"[{x}][{y}] = {currentValue.ToString()}");
                 }
             }
             

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1875365591}
   - component: {fileID: 1875365592}
   m_Layer: 5
-  m_Name: LevelButtons
+  m_Name: LevelFrames
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,4 +243,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animatedRectTransform: {fileID: 7484614765510592260}
   fadeTransitionConfig: {fileID: 11400000, guid: e1d21cba9a591b54ab2b2784f770e944, type: 2}
-  levelButtons: {fileID: 1875365591}
+  holder: {fileID: 1875365591}

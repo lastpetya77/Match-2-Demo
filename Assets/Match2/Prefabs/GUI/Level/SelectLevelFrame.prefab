@@ -147,9 +147,9 @@ GameObject:
   - component: {fileID: 1768905930608144341}
   - component: {fileID: 1768905930608144346}
   - component: {fileID: 1768905930608144347}
-  - component: {fileID: 1768905930608144327}
+  - component: {fileID: 2979582363322965266}
   m_Layer: 5
-  m_Name: SelectLevelButton
+  m_Name: SelectLevelFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258,7 +258,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1768905930608144327
+--- !u!114 &2979582363322965266
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

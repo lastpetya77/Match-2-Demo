@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: 37e74c7d089dac042a55b8ca9eb473ae
   m_SerializeEntries:
   - m_GUID: 694f5686d94028045add834f56092acc
-    m_Address: SelectLevelButton
+    m_Address: SelectLevelFrame
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
