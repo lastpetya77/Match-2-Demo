@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
 
-namespace Match2.Partial.UI
+namespace Match2.Partial.UI.Windows
 {
     public class MainMenuWindow : WindowBase
     {
@@ -17,7 +17,7 @@ namespace Match2.Partial.UI
         {
             changeStateButton.onClick.AddListener(() =>
             {
-                gameStateMachine.SetState<GameLevelCreationState>();
+                gameStateMachine.SetState<GameSelectLevelState>();
                 Close();
             });
         }

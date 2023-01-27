@@ -13,6 +13,7 @@ namespace Match2.Partial.Gameplay.GameStates
 
         [Inject] private GameIdleStateFactory gameIdleStateFactory;
         [Inject] private GameForwardStateFactory gameForwardStateFactory;
+        [Inject] private GameSelectLevelStateFactory gameSelectLevelStateFactory;
         [Inject] private GameLevelCreationStateFactory gameLevelCreationStateFactory;
         [Inject] private GameLevelSpawnStateFactory gameLevelSpawnStateFactory;
         [Inject] private GameLevelClearStateFactory gameLevelClearStateFactory;
@@ -22,6 +23,7 @@ namespace Match2.Partial.Gameplay.GameStates
             var idleState = gameIdleStateFactory.Create(this);
             AddState(idleState);
             AddState(gameForwardStateFactory.Create(this));
+            AddState(gameSelectLevelStateFactory.Create(this));
             AddState(gameLevelCreationStateFactory.Create(this));
             AddState(gameLevelSpawnStateFactory.Create(this));
             AddState(gameLevelClearStateFactory.Create(this));

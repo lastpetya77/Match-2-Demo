@@ -8,16 +8,26 @@ namespace Match2.Partial.Gameplay.Static
 {
     public class DefaultStaticDataProvider : IStaticDataProvider
     {
-        [Inject] private CellTypeConverter cellTypeConverter;
+        private ICellTypeConverter cellTypeConverter;
         
         public List<LevelData> Levels { get; private set; }
-        public Dictionary<int, LevelData> LevelsDictionary { get; }
-        public List<ItemData> ItemDatas { get; private set; }
+        public Dictionary<int, LevelData> LevelsDictionary { get; private set; }
+
+        public DefaultStaticDataProvider(ICellTypeConverter cellTypeConverter)
+        {
+            this.cellTypeConverter = cellTypeConverter;
+            
+            Initialize();
+        }
         
         private void Initialize()
         {
             var firstLevel = CreateTemporaryLevelData();
+
+            Levels = new List<LevelData>();
+            LevelsDictionary = new Dictionary<int, LevelData>();
             
+            Levels.Add(firstLevel);
             Levels.Add(firstLevel);
         }
         

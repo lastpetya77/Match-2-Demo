@@ -10,28 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Windows
+  m_Name: GUI Unsorted
   m_EditorClassIdentifier: 
-  m_GroupName: Windows
+  m_GroupName: GUI Unsorted
   m_Data:
     m_SerializedData: []
-  m_GUID: a84ca517c070c9b45bcdf6fefaffd97f
+  m_GUID: 37e74c7d089dac042a55b8ca9eb473ae
   m_SerializeEntries:
-  - m_GUID: 6b0014414672fb043afc7ec7eb346446
-    m_Address: MyFirstWindow
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: d39061a1a42dab84580b76ff0f178e33
-    m_Address: MainMenuWindow
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 3e8eb09594de7c540b3d3d2609808a73
-    m_Address: SelectLevelWindow
+  - m_GUID: 694f5686d94028045add834f56092acc
+    m_Address: SelectLevelButton
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 03f1f0fc4205df145b840ecc1c0333f8, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: a01eb7c93678a3e40bbb463be84ae9b3, type: 2}
-    - {fileID: 11400000, guid: 53f39bee75a23284abf024e57af45ad8, type: 2}
+    - {fileID: 11400000, guid: 31df43d4e6cd0624097cf1d4c8754933, type: 2}
+    - {fileID: 11400000, guid: 8e8eaded1b1e9d24982b0567c24139dd, type: 2}

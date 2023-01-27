@@ -1,6 +1,7 @@
 ﻿using Match2.Common.UI.Windows;
 using Match2.Partial.Loading;
 using Match2.Partial.UI;
+using Match2.Partial.UI.Windows;
 using UnityEngine;
 
 namespace Match2.Partial.Gameplay.GameStates.States

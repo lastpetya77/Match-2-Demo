@@ -1,16 +1,17 @@
 ﻿using Match2.Common.UI.Windows;
 using Match2.Partial.Loading;
+using Match2.Partial.Loading.Enums;
 using Match2.Partial.UI.Windows;
 using UnityEngine;
 
 namespace Match2.Partial.Gameplay.GameStates.States
 {
-    public class GameForwardState : GameState
+    public class GameSelectLevelState : GameState
     {
         private SceneLoader sceneLoader;
         private WindowPresenter windowPresenter;
-
-        public GameForwardState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,
+        
+        public GameSelectLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,
             WindowPresenter windowPresenter) : base(gameStateMachine)
         {
             this.sceneLoader = sceneLoader;
@@ -19,18 +20,19 @@ namespace Match2.Partial.Gameplay.GameStates.States
 
         public override async void Enter()
         {
-            Debug.Log($"GameForwardState Enter");
-
-            await windowPresenter.ShowAsync<MainMenuWindow>();
+            Debug.Log($"GameSelectLevelState Enter");
+            
+            await windowPresenter.ShowAsync<SelectLevelWindow>();
         }
 
         public override void Update()
         {
+            
         }
 
         public override void Exit()
         {
-
+            
         }
     }
 }
