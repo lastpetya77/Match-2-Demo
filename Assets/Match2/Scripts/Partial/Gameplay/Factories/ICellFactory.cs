@@ -6,6 +6,6 @@ namespace Match2.Partial.Gameplay.Factories
 {
     public interface ICellFactory
     {
-        Cell Create(CellType cellType, Transform container, Vector2Int position);
+        ICell Create(CellType cellType, Transform container, Vector2Int position);
     }
 }

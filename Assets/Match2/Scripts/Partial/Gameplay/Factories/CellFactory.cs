@@ -14,9 +14,12 @@ namespace Match2.Partial.Gameplay.Factories
             this.container = container;
         }
         
-        public Cell Create(CellType cellType, Transform container, Vector2Int position)
+        public ICell Create(CellType cellType, Transform parent, Vector2Int coord)
         {
             var cell = new Cell();
+            container.Inject(cell);
+            
+            cell.Initialize(coord);
 
             return cell;
         }

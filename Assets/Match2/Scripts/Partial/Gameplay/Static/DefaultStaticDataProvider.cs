@@ -99,8 +99,6 @@ namespace Match2.Partial.Gameplay.Static
                 {
                     var currentValue = matrix[x, y];
                     cellsData[x, y] = cellTypeConverter.Create(currentValue);
-                    
-                    //Debug.Log($"[{x}][{y}] = {currentValue.ToString()}");
                 }
             }
             

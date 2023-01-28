@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using Match2.Common.UI.Windows;
+using Match2.Partial.Gameplay.Factories;
 using Match2.Partial.Gameplay.Static;
 using Match2.Partial.UI;
 using UnityEngine;
@@ -15,6 +16,8 @@ namespace Match2.Partial.Gameplay
         [Inject] private LifetimeScope lifetimeScope;
 
         [Inject] private LevelData levelData;
+
+        [Inject] private IFieldFactory fieldFactory;
         
         public void Start()
         {
@@ -23,6 +26,8 @@ namespace Match2.Partial.Gameplay
             
             Debug.Log($"lifetimeScope parent {lifetimeScope.Parent}");
             Debug.Log($"TestEntry levelData {levelData.LevelIndex}");
+
+            var field = fieldFactory.Create();
         }
 
         public void Tick()
