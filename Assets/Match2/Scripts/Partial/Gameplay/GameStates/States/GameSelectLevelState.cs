@@ -1,6 +1,7 @@
 ﻿using System;
 using Match2.Common.UI.Windows;
 using Match2.Partial.Loading;
+using Match2.Partial.Loading.Enums;
 using Match2.Partial.Messages;
 using Match2.Partial.UI.Windows;
 using MessagePipe;
@@ -14,12 +15,14 @@ namespace Match2.Partial.Gameplay.GameStates.States
         private IDisposable disposable;
         
         private SceneLoader sceneLoader;
+        private LevelLoader levelLoader;
         private WindowPresenter windowPresenter;
         
-        public GameSelectLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader,
+        public GameSelectLevelState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LevelLoader levelLoader,
             WindowPresenter windowPresenter, ISubscriber<SelectLevelFrameMessage> subscriber) : base(gameStateMachine)
         {
             this.sceneLoader = sceneLoader;
+            this.levelLoader = levelLoader;
             this.windowPresenter = windowPresenter;
             this.subscriber = subscriber;
         }
@@ -38,10 +41,14 @@ namespace Match2.Partial.Gameplay.GameStates.States
             disposable = bag.Build();
         }
 
-        private void MessageHandler(SelectLevelFrameMessage message)
+        private async void MessageHandler(SelectLevelFrameMessage message)
         {
             Debug.Log($"Configure levelData {message.LevelData.LevelIndex}");
-            gameStateMachine.SetState<GameLevelCreationState>();
+            
+            await sceneLoader.LoadSceneAsync(SceneType.Game);
+            await levelLoader.Load(message.LevelData);
+            
+            gameStateMachine.SetState<GameLevelSpawnState>();
         }
         
         public override void Update()

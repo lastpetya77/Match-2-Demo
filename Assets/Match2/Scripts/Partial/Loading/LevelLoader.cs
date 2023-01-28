@@ -1,8 +1,10 @@
 using Cysharp.Threading.Tasks;
+using Match2.Partial.Gameplay.Static;
 using Match2.Partial.Scopes;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using VContainer;
 using VContainer.Unity;
 
 namespace Match2.Partial.Loading
@@ -20,13 +22,16 @@ namespace Match2.Partial.Loading
             currentScope = lifetimeScope;
         }
 
-        public async UniTask Load()
+        public async UniTask Load(LevelData levelData)
         {
             handle = Addressables.LoadAssetAsync<GameObject>("LevelLifetimeScope");
             lifetimeScopePrefab = await LoadAsyncOperationAsync(handle);
             var instance = lifetimeScopePrefab.GetComponent<LevelLifetimeScope>();
             levelLifetimeScope = currentScope.CreateChildFromPrefab(
-                instance);
+                instance, builder =>
+                {
+                    builder.RegisterInstance(levelData);
+                });
         }
 
         private async UniTask<T> LoadAsyncOperationAsync<T>(
@@ -36,7 +41,7 @@ namespace Match2.Partial.Loading
 
             return instance;
         }
-        
+
         public void Unload()
         {
             levelLifetimeScope.Dispose();

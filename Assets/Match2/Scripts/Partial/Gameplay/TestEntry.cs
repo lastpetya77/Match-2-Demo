@@ -1,5 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using Match2.Common.UI.Windows;
+using Match2.Partial.Gameplay.Static;
 using Match2.Partial.UI;
 using UnityEngine;
 using VContainer;
@@ -12,6 +13,8 @@ namespace Match2.Partial.Gameplay
         //[Inject] private WindowPresenter windowPresenter;
         [Inject] private IObjectResolver container;
         [Inject] private LifetimeScope lifetimeScope;
+
+        [Inject] private LevelData levelData;
         
         public void Start()
         {
@@ -19,6 +22,7 @@ namespace Match2.Partial.Gameplay
             //windowPresenter.ShowAsync<MyFirstWindow>().Forget();
             
             Debug.Log($"lifetimeScope parent {lifetimeScope.Parent}");
+            Debug.Log($"TestEntry levelData {levelData.LevelIndex}");
         }
 
         public void Tick()

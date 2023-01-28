@@ -9,16 +9,20 @@ namespace Match2.Partial.Gameplay.GameStates.Factories
     public class GameSelectLevelStateFactory
     {
         private SceneLoader sceneLoader;
+        private LevelLoader levelLoader;
         private WindowPresenter windowPresenter;
         private ISubscriber<SelectLevelFrameMessage> subscriber;
-        
-        public GameSelectLevelStateFactory(SceneLoader sceneLoader, WindowPresenter windowPresenter, ISubscriber<SelectLevelFrameMessage> subscriber)
+
+        public GameSelectLevelStateFactory(SceneLoader sceneLoader, LevelLoader levelLoader,
+            WindowPresenter windowPresenter, ISubscriber<SelectLevelFrameMessage> subscriber)
         {
             this.sceneLoader = sceneLoader;
+            this.levelLoader = levelLoader;
             this.windowPresenter = windowPresenter;
             this.subscriber = subscriber;
         }
-        
-        public GameSelectLevelState Create(GameStateMachine gameStateMachine) => new GameSelectLevelState(gameStateMachine, sceneLoader, windowPresenter, subscriber);
+
+        public GameSelectLevelState Create(GameStateMachine gameStateMachine) =>
+            new GameSelectLevelState(gameStateMachine, sceneLoader, levelLoader, windowPresenter, subscriber);
     }
 }

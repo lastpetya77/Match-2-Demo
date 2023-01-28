@@ -20,10 +20,10 @@ namespace Match2.Partial.Gameplay.GameStates.States
 
         public override async void Enter()
         {
-            await sceneLoader.LoadSceneAsync(SceneType.Game);
-            await levelLoader.Load();
-            
-            gameStateMachine.SetState<GameLevelSpawnState>();   
+            // await sceneLoader.LoadSceneAsync(SceneType.Game);
+            // await levelLoader.Load();
+            //
+            // gameStateMachine.SetState<GameLevelSpawnState>();   
         }
 
         public override void Update()
