@@ -25,7 +25,7 @@ namespace Match2.Partial.Gameplay.GameStates.States
         {
             Debug.Log($"GameLevelSpawnState Enter");
             
-            await windowPresenter.ShowAsync<MyFirstWindow>();
+            //await windowPresenter.ShowAsync<MyFirstWindow>();
         }
 
         public override void Update()

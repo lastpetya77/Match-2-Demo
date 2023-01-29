@@ -1,5 +1,5 @@
 using Match2.Partial.Gameplay.Enums;
-using Match2.Partial.Gameplay.Utils;
+using Match2.Partial.Gameplay.Factories;
 using UnityEngine;
 using VContainer;
 
@@ -7,12 +7,12 @@ namespace Match2.Partial.Gameplay.Entities
 {
     public class Cell : ICell
     {
-        [Inject] private ICellPositionCalculator positionCalculator;
+        [Inject] private ICellViewFactory cellViewFactory;
         
         private CellType type;
         private CellState state;
 
-        private CellView view;
+        private ICellView view;
         private Item item;
         
         private Vector2Int coord;
@@ -20,12 +20,13 @@ namespace Match2.Partial.Gameplay.Entities
         public bool HasItem => item != null;
         public Vector2Int Coord => coord;
         
-        public void Initialize(Vector2Int coord)
+        public async void Initialize(CellType type, Vector2Int coord, Transform parent)
         {
+            this.type = type;
             this.coord = coord;
-            
-            var position = positionCalculator.CoordToLocalPosition(coord);  
-            
+
+            this.view = await cellViewFactory.Create(type, coord, parent);
+
         }
     }
 }

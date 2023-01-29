@@ -19,7 +19,7 @@ namespace Match2.Partial.Gameplay.Factories
             var cell = new Cell();
             container.Inject(cell);
             
-            cell.Initialize(coord);
+            cell.Initialize(cellType, coord, parent);
 
             return cell;
         }

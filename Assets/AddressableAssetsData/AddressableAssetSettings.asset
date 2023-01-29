@@ -45,6 +45,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b5c902f3f4bf39e4cbecd5a90dbfde16, type: 2}
   - {fileID: 11400000, guid: 97810a80983fc4b469e3fa4e61db053a, type: 2}
   - {fileID: 11400000, guid: 1cc3b0f5832b1794f9974fe43111e337, type: 2}
+  - {fileID: 11400000, guid: eb54bd8aaacdbc14fac2466bcc258ef0, type: 2}
+  - {fileID: 11400000, guid: 59af3902a83ae0e4dbe3926a1eea9c28, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -86,6 +88,9 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - windows
+    - items
+    - cells
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 27a0abfc4a7d085409307c517a533ef5, type: 2}

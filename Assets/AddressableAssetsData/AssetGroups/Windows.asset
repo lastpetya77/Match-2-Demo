@@ -20,15 +20,18 @@ MonoBehaviour:
   - m_GUID: 6b0014414672fb043afc7ec7eb346446
     m_Address: MyFirstWindow
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - windows
   - m_GUID: d39061a1a42dab84580b76ff0f178e33
     m_Address: MainMenuWindow
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - windows
   - m_GUID: 3e8eb09594de7c540b3d3d2609808a73
     m_Address: SelectLevelWindow
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - windows
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 03f1f0fc4205df145b840ecc1c0333f8, type: 2}
   m_SchemaSet:
