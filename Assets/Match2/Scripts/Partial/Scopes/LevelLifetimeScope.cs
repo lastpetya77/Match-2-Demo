@@ -14,7 +14,10 @@ namespace Match2.Partial.Scopes
             builder.Register<ICellPositionCalculator, CellPositionCalculator>(Lifetime.Scoped);
             builder.Register<ICellFactory, CellFactory>(Lifetime.Scoped);
             builder.Register<ICellViewFactory, CellViewFactory>(Lifetime.Scoped);
+            builder.Register<IItemFactory, ItemFactory>(Lifetime.Scoped);
+            builder.Register<IItemViewFactory, ItemViewFactory>(Lifetime.Scoped);
             builder.Register<IFieldFactory, FieldFactory>(Lifetime.Scoped);
+            
             builder.RegisterEntryPoint<LevelEntry>();
         }
     }

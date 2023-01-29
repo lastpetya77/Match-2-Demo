@@ -35,9 +35,7 @@ namespace Match2.Partial.Gameplay.GameStates.States
             selectLevelWindow.Initialize();
 
             var bag = DisposableBag.CreateBuilder(); // composite disposable for manage subscription
-
             subscriber.Subscribe(MessageHandler).AddTo(bag);
-            
             disposable = bag.Build();
         }
 

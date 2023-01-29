@@ -19,9 +19,7 @@ namespace Match2.Partial.Gameplay.Level
             var field = fieldFactory.Create();
             
             var bag = DisposableBag.CreateBuilder(); // composite disposable for manage subscription
-            
             subscriber.Subscribe(m => Debug.Log($"message coord {m.Coord}")).AddTo(bag);
-            
             disposable = bag.Build();
         }
 
