@@ -20,6 +20,7 @@ namespace Match2.Partial.Installers
             
             builder.RegisterMessageBroker<TestEvent>(options);
             builder.RegisterMessageBroker<SelectLevelFrameMessage>(options);
+            builder.RegisterMessageBroker<OnCellClickedMessage>(options);
         }
     }
 }

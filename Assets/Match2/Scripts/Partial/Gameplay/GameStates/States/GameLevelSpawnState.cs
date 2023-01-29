@@ -1,22 +1,21 @@
 ﻿using Match2.Common.UI.Windows;
 using Match2.Partial.Loading;
-using Match2.Partial.UI;
-using Match2.Partial.UI.Windows;
 using UnityEngine;
+using VContainer;
 
 namespace Match2.Partial.Gameplay.GameStates.States
 {
     public class GameLevelSpawnState : GameState
     {
         private SceneLoader sceneLoader;
-        private LevelLoader levelLoader;
+        private IObjectResolver container;
         private WindowPresenter windowPresenter;
 
-        public GameLevelSpawnState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, LevelLoader levelLoader, WindowPresenter windowPresenter)
+        public GameLevelSpawnState(GameStateMachine gameStateMachine, SceneLoader sceneLoader, IObjectResolver container, WindowPresenter windowPresenter)
             : base(gameStateMachine)
         {
             this.sceneLoader = sceneLoader;
-            this.levelLoader = levelLoader;
+            this.container = container;
             this.windowPresenter = windowPresenter;
             
         }
@@ -24,8 +23,6 @@ namespace Match2.Partial.Gameplay.GameStates.States
         public override async void Enter()
         {
             Debug.Log($"GameLevelSpawnState Enter");
-            
-            //await windowPresenter.ShowAsync<MyFirstWindow>();
         }
 
         public override void Update()

@@ -11,6 +11,7 @@ namespace Match2.Partial.Gameplay.Factories
     public class CellViewFactory : ICellViewFactory
     {
         [Inject] private ICellPositionCalculator positionCalculator;
+        [Inject] private IObjectResolver container;
         
         public async UniTask<ICellView> Create(CellType cellType, Vector2Int coord, Transform parent)
         {
@@ -20,7 +21,8 @@ namespace Match2.Partial.Gameplay.Factories
             instance.transform.position = positionCalculator.CoordToLocalPosition(coord);  
 
             var cellView = instance.GetComponent<ICellView>();
-            //cellView.ini
+            cellView.Initialize(coord);
+            container.Inject(cellView);
 
             return cellView;
         }
