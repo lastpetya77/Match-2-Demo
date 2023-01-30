@@ -33,15 +33,8 @@ namespace Match2.Partial.Gameplay.Entities
         public async UniTask CreateView()
         {
             this.view = await itemViewFactory.Create(data, parent);
+        }
 
-            //await UniTask.CompletedTask;
-        }
-        
-        public void SetParent(ICell parent)
-        {
-            this.parent = parent;
-        }
-        
         public void Sort()
         {
             var coord = parent.Coord;
@@ -53,6 +46,33 @@ namespace Match2.Partial.Gameplay.Entities
         private void SetSortingOrder(int sortingOrder)
         {
             view.SetSortingOrder(sortingOrder);
+        }
+        
+        /// <summary>
+        /// Вызываем только из функции ICell.SetChild()
+        /// </summary>
+        /// <param name="parent"></param>
+        public void SetParent(ICell parent)
+        {
+            this.parent = parent;
+        }
+        
+        public void SetTarget(ICell cell)
+        {
+            this.target = cell;
+
+            cell.State = CellState.Blocked;
+            this.state = ItemState.ReadyToFall;
+        }
+        
+        public void Decline()
+        {
+            this.view.Decline();
+        }
+        
+        public bool IsMatched(IItem item)
+        {
+            return item.Type == Type && item.Color == Color;
         }
     }
 }

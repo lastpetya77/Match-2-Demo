@@ -14,11 +14,7 @@ namespace Match2.Partial.Gameplay.Factories
         public async UniTask<IItemView> Create(ItemData itemData, ICell parent)
         {
             var instance = await Addressables.InstantiateAsync("Common");
-            //handle = Addressables.LoadAssetAsync<Sprite>($"cube_{itemData.Color}_{itemData.Type}");
-
-            var name = $"cube_{itemData.Color}_{itemData.Type}";
-            Debug.Log("name " + name.ToLower());
-            handle = Addressables.LoadAssetAsync<Sprite>(name.ToLower());
+            handle = Addressables.LoadAssetAsync<Sprite>($"cube_{itemData.Color}_{itemData.Type}".ToLower());
             var sprite = await LoadAsyncOperationAsync(handle);
 
             var view = instance.GetComponent<IItemView>();

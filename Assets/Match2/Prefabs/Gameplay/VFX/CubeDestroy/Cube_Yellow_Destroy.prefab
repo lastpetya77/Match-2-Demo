@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2456503960175118708}
+  - component: {fileID: -5148353465882053102}
   m_Layer: 0
-  m_Name: Cube_Yellow_Destroy
+  m_Name: cube_yellow_destroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,6 +36,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5148353465882053102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608564396758863330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a755c5da869354342870f3b961f2c57e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3340243157779042691
 GameObject:
   m_ObjectHideFlags: 0

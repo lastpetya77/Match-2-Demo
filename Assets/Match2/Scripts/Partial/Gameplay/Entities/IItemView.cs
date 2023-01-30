@@ -7,5 +7,6 @@ namespace Match2.Partial.Gameplay.Entities
         Transform transform { get; }
         void Initialize(Sprite sprite);
         void SetSortingOrder(int sortingOrder);
+        void Decline();
     }
 }

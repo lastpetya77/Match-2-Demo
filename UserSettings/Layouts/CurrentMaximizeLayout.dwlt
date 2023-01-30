@@ -162,8 +162,8 @@ MonoBehaviour:
     y: 0
     width: 632.8
     height: 369.6
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 6}
   m_Panes:
   - {fileID: 5}
@@ -513,7 +513,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
+  m_Name: GameView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -522,8 +522,8 @@ MonoBehaviour:
     y: 369.6
     width: 632.8
     height: 353.19998
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -553,7 +553,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 23
+  controlID: 9478
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -611,9 +611,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 629affff
-      m_LastClickedID: -26014
-      m_ExpandedIDs: a89affffb29affff30a4ffff3aa4ffff18acffff22acffffb2bbffffd2bdffffd6d0ffff9ad1ffff3ed9ffffdcdcffffe6dcffff36fbfffff4ffffff44670000a6670000ac670000bc670000
+      m_SelectedIDs: 9651ffff
+      m_LastClickedID: -44650
+      m_ExpandedIDs: 8851ffffbe51ffffc851ffff8c97fffffa97ffff2e98ffffa89affffb29affff30a4ffff3aa4ffff18acffff22acffffb2bbffffd2bdffffd6d0ffff9ad1ffff3ed9ffffdcdcffffe6dcffff36fbfffff4ffffff44670000a6670000ac670000bc670000686d00006e6d00007e6d0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -704,7 +704,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Match2/Prefabs/Gameplay/Cells
+    - Assets/Match2/Prefabs/Gameplay/Items
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -718,7 +718,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 86270200
     m_LastClickedID: 141190
-    m_ExpandedIDs: 000000004461000046610000486100004a6100004c6100004e61000050610000526100005461000056610000586100005a6100005c6100005e61000060610000626100006461000066610000686100006a6100006c6100006e61000070610000726100007461000076610000786100007a610000
+    m_ExpandedIDs: ffffffff0000000044610000466100004a6100005061000052610000546100006261000068610000d6610000fa6100002c6400003e640000406400004464000046640000486400005e640000766a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -744,9 +744,9 @@ MonoBehaviour:
       m_ResourceFile: 
   m_AssetTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 629affff
+    m_SelectedIDs: 9651ffff
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff0000000044610000466100004a6100005061000052610000546100006261000068610000d6610000fa6100002c6400003e640000406400004464000046640000486400005e640000766a0000
+    m_ExpandedIDs: ffffffff0000000044610000466100004a610000546100006261000068610000d6610000fa610000206400002c6400003e64000040640000446400004664000048640000546400005e64000060640000766a0000926f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -771,8 +771,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 629affff
-    m_LastClickedInstanceID: -26014
+    m_SelectedInstanceIDs: 9651ffff
+    m_LastClickedInstanceID: -44650
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
@@ -864,7 +864,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 63.19995
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -901,9 +901,9 @@ MonoBehaviour:
   m_GroupEditor:
     m_TreeState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 6aa2ea95322900b78bdde21fbcfa1f3a
+      m_SelectedIDs: 25435d2e
+      m_LastClickedID: 777863973
+      m_ExpandedIDs: 6aa2ea95322900b78bdde21f58f01921bcfa1f3a85f69d4c
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

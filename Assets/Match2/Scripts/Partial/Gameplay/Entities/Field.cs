@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Match2.Partial.Gameplay.Enums;
 using Match2.Partial.Gameplay.Factories;
 using Match2.Partial.Gameplay.Static;
+using Match2.Partial.Gameplay.VFX;
 using UnityEngine;
 using VContainer;
 
@@ -12,34 +14,37 @@ namespace Match2.Partial.Gameplay.Entities
         [Inject] private LevelData currentLevelData;
         [Inject] private ICellFactory cellFactory;
         [Inject] private IItemFactory itemFactory;
-        
+
         private Vector2Int size;
         private ICell[,] cells;
-        private Vector2Int fieldSize;
+        private IList<IItem> items;
 
         private GameObject fieldView;
 
+        public ICell[,] Cells => cells;
+        public IList<IItem> Items => items;
+        public Vector2Int Size => size;
+        
         public void Initialize()
         {
             fieldView = new GameObject("FieldView");
             
             var cellsData = currentLevelData.CellsData;
-
-            fieldSize.x = cellsData.GetLength(0);
-            fieldSize.y = cellsData.GetLength(1);
-
+            size.x = cellsData.GetLength(0);
+            size.y = cellsData.GetLength(1);
+            
             CreateCells();
-            CreateChips().Forget();
+            CreateItems().Forget();
         }
 
         private void CreateCells()
         {
             var cellsData = currentLevelData.CellsData;
             
-            cells = new ICell[fieldSize.x, fieldSize.y];
-            for (int y = 0; y < fieldSize.y; y++)
+            cells = new ICell[size.x, size.y];
+            for (int y = 0; y < size.y; y++)
             {
-                for (int x = 0; x < fieldSize.x; x++)
+                for (int x = 0; x < size.x; x++)
                 {
                     var cellType = cellsData[x, y];
                     cells[x, y] = cellFactory.Create(cellType, fieldView.transform, new Vector2Int(x, y));
@@ -47,30 +52,34 @@ namespace Match2.Partial.Gameplay.Entities
             }
         }
         
-        private async UniTaskVoid CreateChips()
+        private async UniTaskVoid CreateItems()
         {
             var itemsData = currentLevelData.ItemsData;
             
-            for (int y = 0; y < fieldSize.y; y++)
+            items = new List<IItem>();
+            for (int y = 0; y < size.y; y++)
             {
-                for (int x = 0; x < fieldSize.x; x++)
+                for (int x = 0; x < size.x; x++)
                 {
                     var currentCell = cells[x, y];
                     
-                    if (currentCell.CellType != CellType.Default)
+                    if (currentCell.Type != CellType.Default)
                     {
                         continue;
                     }                
                     
-                    if (currentCell.CellState == CellState.Blocked)
+                    if (currentCell.State == CellState.Blocked)
                     {
                         continue;
                     }
 
                     var itemData = itemsData[x, y];
                     var item = await itemFactory.Create(itemData, currentCell);
+                    items.Add(item);
                 }
             }          
         }
+        
+
     }
 }

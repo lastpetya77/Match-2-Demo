@@ -10,7 +10,6 @@ namespace Match2.Partial.Gameplay.Entities
         [Inject] private ICellViewFactory cellViewFactory;
         
         private CellType type;
-        private CellState state;
 
         private ICellView view;
         private IItem child;
@@ -19,9 +18,33 @@ namespace Match2.Partial.Gameplay.Entities
 
         public Transform transform => view.transform;
         public bool HasChild => child != null;
+        public IItem Child => child;
         public Vector2Int Coord => coord;
-        public CellType CellType => type;
-        public CellState CellState => state;
+        public CellType Type => type;
+        public CellState State { get; set; }
+
+        public bool IsInteractable
+        {
+            get
+            {
+                if (Type != CellType.Default)
+                {
+                    return false;
+                }
+
+                if (State == CellState.Blocked)
+                {
+                    return false;
+                }          
+            
+                if (!HasChild)
+                {
+                    return false;
+                }
+            
+                return true;
+            }
+        }
         
         public async void Initialize(CellType type, Vector2Int coord, Transform parent)
         {
@@ -44,5 +67,21 @@ namespace Match2.Partial.Gameplay.Entities
             
             item.SetParent(this);
         }
+        
+        public void ReleaseChild()
+        {
+            if (child == null)
+            {
+                return;
+            }
+
+            child = null;
+            State = CellState.Default;           
+        }
+        
+        public bool IsMatched(ICell otherCell)
+        {
+            return child.IsMatched(otherCell.Child);
+        }   
     }
 }
