@@ -1,31 +1,27 @@
 ﻿using System;
-using Match2.Partial.Gameplay.Factories;
-using Match2.Partial.Messages;
-using MessagePipe;
-using UnityEngine;
+using Match2.Partial.Gameplay.Level.LevelStates;
 using VContainer;
 using VContainer.Unity;
 
 namespace Match2.Partial.Gameplay.Level
 {
-    public class LevelEntry : IStartable, ITickable
+    public class LevelEntry : IStartable, ITickable, IDisposable
     {
-        [Inject] private IFieldFactory fieldFactory;
-        [Inject] private ISubscriber<OnCellClickedMessage> subscriber;
-        private IDisposable disposable;
+        [Inject] private LevelStateMachine levelStateMachine;
         
         public void Start()
         {
-            var field = fieldFactory.Create();
-            
-            var bag = DisposableBag.CreateBuilder(); // composite disposable for manage subscription
-            subscriber.Subscribe(m => Debug.Log($"message coord {m.Coord}")).AddTo(bag);
-            disposable = bag.Build();
+            levelStateMachine.Initialize();
         }
 
         public void Tick()
         {
-            
+            levelStateMachine.Update();
+        }
+
+        public void Dispose()
+        {
+
         }
     }
 }

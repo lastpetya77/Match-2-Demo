@@ -102,24 +102,15 @@ namespace Match2.Partial.Gameplay.VFX
             pools[vfx.Color].Return(vfx);
         }
 
-        public void Clear()
+        public void Dispose()
         {
-            // var current = handles.GetEnumerator();
-            // while (current.MoveNext())
-            // {
-            //     Addressables.Release(current);
-            // }
-
             while (handles.Count > 0)
             {
                 var current = handles.Pop();
                 Addressables.Release(current);
             }
-        }
-
-        public void Dispose()
-        {
-            Clear();
+            
+            Debug.Log($"handles {handles.Count}");
         }
     }
 }
