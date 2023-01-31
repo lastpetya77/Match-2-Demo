@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using Match2.Partial.Gameplay.Enums;
 using Match2.Partial.Gameplay.Factories;
+using Match2.Partial.Gameplay.Level;
 using Match2.Partial.Gameplay.Static;
-using Match2.Partial.Gameplay.VFX;
 using UnityEngine;
 using VContainer;
 
@@ -14,6 +14,9 @@ namespace Match2.Partial.Gameplay.Entities
         [Inject] private LevelData currentLevelData;
         [Inject] private ICellFactory cellFactory;
         [Inject] private IItemFactory itemFactory;
+
+        [Inject] private ItemsMatch itemsMatch;
+        [Inject] private ItemsFall itemsFall;
 
         private Vector2Int size;
         private ICell[,] cells;
@@ -35,6 +38,9 @@ namespace Match2.Partial.Gameplay.Entities
             
             CreateCells();
             CreateItems().Forget();
+            
+            itemsMatch.Initialize(this);
+            itemsFall.Initialize(this);
         }
 
         private void CreateCells()

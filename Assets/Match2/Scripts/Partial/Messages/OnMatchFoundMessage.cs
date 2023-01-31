@@ -5,10 +5,10 @@ namespace Match2.Partial.Messages
 {
     public class OnMatchFoundMessage
     {
-        public HashSet<ICell> CellEntities;
-        public OnMatchFoundMessage(HashSet<ICell> cellEntities)
+        public HashSet<ICell> Cells;
+        public OnMatchFoundMessage(HashSet<ICell> cells)
         {
-            this.CellEntities = cellEntities;
+            this.Cells = cells;
         }
     }
 }

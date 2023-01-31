@@ -1,7 +1,10 @@
 ﻿using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Match2.Partial.Gameplay.Enums;
 using Match2.Partial.Gameplay.Factories;
 using Match2.Partial.Gameplay.Static;
+using Match2.Partial.Gameplay.VFX;
+using UnityEngine.AddressableAssets;
 using VContainer;
 
 namespace Match2.Partial.Gameplay.Entities
@@ -9,6 +12,7 @@ namespace Match2.Partial.Gameplay.Entities
     public class Item : IItem
     {
         [Inject] private IItemViewFactory itemViewFactory;
+        [Inject] private ItemDestroyPoolCollection itemDestroyPoolCollection;
         
         private ItemData data;
         private ItemState state;
@@ -57,6 +61,29 @@ namespace Match2.Partial.Gameplay.Entities
             this.parent = parent;
         }
         
+        public async UniTask Fall()
+        {
+            await FallToInternal(Target);
+            ResetCellState(Target);
+            Sort();
+        }
+        
+        private async UniTask FallToInternal(ICell toCell)
+        {
+            this.state = ItemState.FallDown;
+            var moveTo = view.MoveTo(toCell.Position, 0.1f);
+            
+            await moveTo.AsyncWaitForCompletion();
+        }
+        
+        private void ResetCellState(ICell toCell)
+        {
+            toCell.SetChild(this);
+            toCell.State = CellState.Default;
+            state = ItemState.Default;
+            target = null;
+        }  
+        
         public void SetTarget(ICell cell)
         {
             this.target = cell;
@@ -73,6 +100,28 @@ namespace Match2.Partial.Gameplay.Entities
         public bool IsMatched(IItem item)
         {
             return item.Type == Type && item.Color == Color;
+        }
+        
+        public async UniTask Destroy()
+        {
+            if (view == null)
+            {
+                return;
+            }
+
+            view.Hide();
+            
+            await DestroyInternal();
+        }
+        
+        private async UniTask DestroyInternal()
+        {
+            itemDestroyPoolCollection.SpawnEffectAndReturn(Color, view.transform.position);
+            Addressables.ReleaseInstance(view.gameObject);
+
+            await UniTask.Delay(30);
+            
+            parent.ReleaseChild();
         }
     }
 }

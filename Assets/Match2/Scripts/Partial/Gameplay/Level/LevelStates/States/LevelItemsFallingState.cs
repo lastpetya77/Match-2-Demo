@@ -6,17 +6,23 @@ namespace Match2.Partial.Gameplay.Level.LevelStates.States
     public class LevelItemsFallingState : LevelState
     {
         private IFieldFactory fieldFactory;
+        private ItemsFall itemsFall;
         
-        public LevelItemsFallingState(LevelStateMachine levelStateMachine, IFieldFactory fieldFactory) : base(levelStateMachine)
+        public LevelItemsFallingState(LevelStateMachine levelStateMachine, IFieldFactory fieldFactory, ItemsFall itemsFall) : base(levelStateMachine)
         {
             this.fieldFactory = fieldFactory;
+            this.itemsFall = itemsFall;
         }
 
-        public override void Enter()
+        public override async void Enter()
         {
             Debug.Log($"LevelItemsFallingState Enter");
-        }
+            
+            await itemsFall.Fall();
 
+            levelStateMachine.SetState<LevelPlayerActionState>();
+        }
+        
         public override void Update()
         {
             
@@ -24,7 +30,7 @@ namespace Match2.Partial.Gameplay.Level.LevelStates.States
 
         public override void Exit()
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

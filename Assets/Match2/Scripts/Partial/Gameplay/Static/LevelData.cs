@@ -10,5 +10,7 @@ namespace Match2.Partial.Gameplay.Static
         public List<GoalData> Goals;
         public CellType[,] CellsData;
         public ItemData[,] ItemsData;
+        
+        public List<ItemData> CommonItemsData;
     }
 }

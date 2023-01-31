@@ -10,7 +10,7 @@ namespace Match2.Partial.Gameplay.Static
         
         public List<LevelData> Levels { get; private set; }
         public Dictionary<int, LevelData> LevelsDictionary { get; private set; }
-
+        
         public DefaultStaticDataProvider(ICellTypeConverter cellTypeConverter)
         {
             this.cellTypeConverter = cellTypeConverter;
@@ -34,9 +34,11 @@ namespace Match2.Partial.Gameplay.Static
             var cellsMatrix = CreateTemporaryLevelMatrix();
             var colorMatrix = CreateTemporaryColorMatrix();
             
-            var cellsData = CreateCellsData(cellsMatrix);
-            var itemsData = CreateItemsData(colorMatrix);
+            var temporaryCellsData = CreateTemporaryCellsData(cellsMatrix);
+            var temporaryItemsData = CreateTemporaryItemsData(colorMatrix);
             
+            var commonItemsData = CreateCommonItemsData();
+
             var itemData = new ItemData
             {
                 Type = ItemType.Default,
@@ -54,8 +56,9 @@ namespace Match2.Partial.Gameplay.Static
             {
                 LevelIndex = 1,
                 Goals = goals,
-                CellsData = cellsData,
-                ItemsData = itemsData
+                CellsData = temporaryCellsData,
+                ItemsData = temporaryItemsData,
+                CommonItemsData = commonItemsData
             };
 
             return levelData;
@@ -89,7 +92,7 @@ namespace Match2.Partial.Gameplay.Static
             return matrix;
         }        
         
-        private CellType[,] CreateCellsData(int[,] matrix)
+        private CellType[,] CreateTemporaryCellsData(int[,] matrix)
         {
             var cellsData = new CellType[5, 7];
             
@@ -105,7 +108,7 @@ namespace Match2.Partial.Gameplay.Static
             return cellsData;
         }
 
-        private ItemData[,] CreateItemsData(int[,] matrix)
+        private ItemData[,] CreateTemporaryItemsData(int[,] matrix)
         {
             var itemsData = new ItemData[5, 7];
             for (int y = 0; y < matrix.GetLength(1); y++)
@@ -128,6 +131,18 @@ namespace Match2.Partial.Gameplay.Static
             }
 
             return itemsData;
-        } 
+        }
+
+        private List<ItemData> CreateCommonItemsData()
+        {
+            var itemsData = new List<ItemData>
+            {
+                new ItemData { Color = ItemColor.Red, Type = ItemType.Default},
+                new ItemData { Color = ItemColor.Blue, Type = ItemType.Default},
+                new ItemData { Color = ItemColor.Green, Type = ItemType.Default},
+            };
+
+            return itemsData;
+        }
     }
 }

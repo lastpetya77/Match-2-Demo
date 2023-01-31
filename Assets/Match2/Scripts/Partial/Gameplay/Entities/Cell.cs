@@ -17,6 +17,7 @@ namespace Match2.Partial.Gameplay.Entities
         private Vector2Int coord;
 
         public Transform transform => view.transform;
+        public Vector3 Position => view.transform.position;
         public bool HasChild => child != null;
         public IItem Child => child;
         public Vector2Int Coord => coord;
@@ -42,6 +43,28 @@ namespace Match2.Partial.Gameplay.Entities
                     return false;
                 }
             
+                return true;
+            }
+        }
+        
+        public bool CanBeFalled
+        {
+            get
+            {
+                if (Type != CellType.Default)
+                {
+                    return false;
+                }
+
+                if (!HasChild)
+                {
+                    return false;
+                }
+                
+                if (Child.State != ItemState.Default)
+                {
+                    return false;
+                }
                 return true;
             }
         }

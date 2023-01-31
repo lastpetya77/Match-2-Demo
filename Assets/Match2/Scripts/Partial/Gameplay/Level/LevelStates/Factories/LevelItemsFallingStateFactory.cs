@@ -6,13 +6,15 @@ namespace Match2.Partial.Gameplay.Level.LevelStates.Factories
     public class LevelItemsFallingStateFactory
     {
         private IFieldFactory fieldFactory;
+        private ItemsFall itemsFall;
         
-        public LevelItemsFallingStateFactory(IFieldFactory fieldFactory)
+        public LevelItemsFallingStateFactory(IFieldFactory fieldFactory, ItemsFall itemsFall)
         {
             this.fieldFactory = fieldFactory;
+            this.itemsFall = itemsFall;
         }
         
-        public LevelItemsFallingState Create(LevelStateMachine levelStateMachine) => new LevelItemsFallingState(levelStateMachine, fieldFactory);
+        public LevelItemsFallingState Create(LevelStateMachine levelStateMachine) => new LevelItemsFallingState(levelStateMachine, fieldFactory, itemsFall);
 
     }
 }

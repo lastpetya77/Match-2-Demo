@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Match2.Partial.Gameplay.Entities;
 using Match2.Partial.Gameplay.Enums;
@@ -9,11 +8,10 @@ using UnityEngine;
 
 namespace Match2.Partial.Gameplay.Level
 {
-    public class ItemsMatch : IDisposable
+    public class ItemsMatch
     {
         private IPublisher<OnMatchFoundMessage> onMatchFoundPublisher;
-        private IDisposable onCellClickedMessageSubscription;
-        
+
         private Vector2Int fieldSize;
         private ICell[,] cells;
         
@@ -33,19 +31,19 @@ namespace Match2.Partial.Gameplay.Level
             }
         }
 
-        public ItemsMatch(IPublisher<OnMatchFoundMessage> onMatchFoundPublisher, ISubscriber<OnCellClickedMessage> onCellClickedSubscriber, IField field)
+        public ItemsMatch(IPublisher<OnMatchFoundMessage> onMatchFoundPublisher)
         {
             this.onMatchFoundPublisher = onMatchFoundPublisher;
+        }
+
+        public void Initialize(IField field)
+        {
             fieldSize = field.Size;
-            
-            var bag = DisposableBag.CreateBuilder(); // composite disposable for manage subscription
-            onCellClickedSubscriber.Subscribe(OnCellClicked).AddTo(bag);
-            onCellClickedMessageSubscription = bag.Build();
+            cells = field.Cells;
         }
         
-        private void OnCellClicked(OnCellClickedMessage message)
+        public void OnCellClicked(Vector2Int coord)
         {
-            var coord = message.Coord;
             var currentCell = cells[coord.x, coord.y];
             if (!currentCell.IsInteractable)
             {
@@ -56,6 +54,8 @@ namespace Match2.Partial.Gameplay.Level
             if (cellEntities.Count >= requiredCellsCount)
             {
                 onMatchFoundPublisher.Publish(new OnMatchFoundMessage(cellEntities));
+                Debug.Log($"ItemsMatch onMatchFoundPublisher");
+
             }
             else
             {
@@ -63,7 +63,7 @@ namespace Match2.Partial.Gameplay.Level
             }
         }
         
-        public HashSet<ICell> BFS(ICell start)
+        private HashSet<ICell> BFS(ICell start)
         {
             var visited = new HashSet<ICell>();
 
@@ -131,11 +131,6 @@ namespace Match2.Partial.Gameplay.Level
         {
             return coord.x >= 0 && coord.x < fieldSize.x &&
                    coord.y >= 0 && coord.y < fieldSize.y;
-        }
-
-        public void Dispose()
-        {
-            onCellClickedMessageSubscription?.Dispose();
         }
     }
 }

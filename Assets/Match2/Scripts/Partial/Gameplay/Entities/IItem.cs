@@ -10,7 +10,10 @@ namespace Match2.Partial.Gameplay.Entities
         ItemState State { get; }
         bool IsMatched(IItem item);
         UniTask CreateView();
+        UniTask Destroy();
+        UniTask Fall();
         void SetParent(ICell parent);
+        void SetTarget(ICell cell);
         void Sort();
         void Decline();
     }

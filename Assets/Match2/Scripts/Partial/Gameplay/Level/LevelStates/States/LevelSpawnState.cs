@@ -17,6 +17,8 @@ namespace Match2.Partial.Gameplay.Level.LevelStates.States
             Debug.Log($"LevelSpawnState Enter");
             
             var field = fieldFactory.Create();
+            
+            levelStateMachine.SetState<LevelPlayerActionState>();
         }
 
         public override void Update()
