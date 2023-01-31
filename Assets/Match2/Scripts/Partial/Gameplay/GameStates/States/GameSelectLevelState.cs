@@ -41,8 +41,6 @@ namespace Match2.Partial.Gameplay.GameStates.States
 
         private async void MessageHandler(SelectLevelFrameMessage message)
         {
-            Debug.Log($"Configure levelData {message.LevelData.LevelIndex}");
-            
             await sceneLoader.LoadSceneAsync(SceneType.Game);
             await levelLoader.Load(message.LevelData);
             

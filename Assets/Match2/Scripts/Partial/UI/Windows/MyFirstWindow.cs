@@ -11,7 +11,6 @@ namespace Match2.Partial.UI.Windows
 {
     public class MyFirstWindow : WindowBase
     {
-        [Inject] readonly IPublisher<TestEvent> publisher;
         //[Inject] readonly IPublisher<int> publisher;
         [Inject] private GameStateMachine gameStateMachine;
 

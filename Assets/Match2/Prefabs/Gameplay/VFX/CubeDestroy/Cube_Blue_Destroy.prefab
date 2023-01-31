@@ -9,15 +9,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 608564396758863330, guid: e6ad87e80cd305a4381380f382f2da16, type: 3}
       propertyPath: m_Name
-      value: Cube_Blue_Destroy
+      value: cube_blue_destroy
       objectReference: {fileID: 0}
     - target: {fileID: 1073656028033298080, guid: e6ad87e80cd305a4381380f382f2da16, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1073656028033298080, guid: e6ad87e80cd305a4381380f382f2da16, type: 3}
       propertyPath: m_SortingLayerID
-      value: -986155167
+      value: -1151660103
       objectReference: {fileID: 0}
     - target: {fileID: 1073656028033298080, guid: e6ad87e80cd305a4381380f382f2da16, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -69,11 +69,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2594663952900597893, guid: e6ad87e80cd305a4381380f382f2da16, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2594663952900597893, guid: e6ad87e80cd305a4381380f382f2da16, type: 3}
       propertyPath: m_SortingLayerID
-      value: -986155167
+      value: -1151660103
       objectReference: {fileID: 0}
     - target: {fileID: 2594663952900597893, guid: e6ad87e80cd305a4381380f382f2da16, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -81,11 +81,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 3e242af1a736a1143a046ce7157d954b, type: 2}
     - target: {fileID: 4737274563009479307, guid: e6ad87e80cd305a4381380f382f2da16, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4737274563009479307, guid: e6ad87e80cd305a4381380f382f2da16, type: 3}
       propertyPath: m_SortingLayerID
-      value: -986155167
+      value: -1151660103
       objectReference: {fileID: 0}
     - target: {fileID: 4948351461921949643, guid: e6ad87e80cd305a4381380f382f2da16, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -101,11 +101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5806605828214529652, guid: e6ad87e80cd305a4381380f382f2da16, type: 3}
       propertyPath: m_SortingLayer
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5806605828214529652, guid: e6ad87e80cd305a4381380f382f2da16, type: 3}
       propertyPath: m_SortingLayerID
-      value: -986155167
+      value: -1151660103
       objectReference: {fileID: 0}
     - target: {fileID: 7212605535708074700, guid: e6ad87e80cd305a4381380f382f2da16, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b

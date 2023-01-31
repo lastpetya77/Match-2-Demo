@@ -54,7 +54,6 @@ namespace Match2.Partial.Gameplay.Level
             if (cellEntities.Count >= requiredCellsCount)
             {
                 onMatchFoundPublisher.Publish(new OnMatchFoundMessage(cellEntities));
-                Debug.Log($"ItemsMatch onMatchFoundPublisher");
 
             }
             else

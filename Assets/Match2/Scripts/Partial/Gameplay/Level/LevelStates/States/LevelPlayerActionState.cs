@@ -30,7 +30,7 @@ namespace Match2.Partial.Gameplay.Level.LevelStates.States
         {
             Debug.Log($"LevelPlayerActionState Enter");
 
-            var bag = DisposableBag.CreateBuilder(); // composite disposable for manage subscription
+            var bag = DisposableBag.CreateBuilder();
             onCellClickedSubscriber.Subscribe(OnCellClicked).AddTo(bag);
             onMatchFoundSubscriber.Subscribe(OnMatchFound).AddTo(bag);
             subscriptions = bag.Build();
@@ -50,7 +50,6 @@ namespace Match2.Partial.Gameplay.Level.LevelStates.States
         private void OnCellClicked(OnCellClickedMessage message)
         {
             itemsMatch.OnCellClicked(message.Coord);
-            Debug.Log($"LevelPlayerActionState OnCellClicked {message.Coord}");
         }
 
         private void OnMatchFound(OnMatchFoundMessage message)

@@ -26,7 +26,7 @@ namespace Match2.Partial.Gameplay.Level.LevelStates.States
         {
             Debug.Log($"LevelDestroyingMatchesState Enter");
             
-            var bag = DisposableBag.CreateBuilder(); // composite disposable for manage subscription
+            var bag = DisposableBag.CreateBuilder();
             onMatchFoundSubscriber.Subscribe(OnMatchFound).AddTo(bag);
             subscriptions = bag.Build();
         }
@@ -48,8 +48,6 @@ namespace Match2.Partial.Gameplay.Level.LevelStates.States
         
         private async UniTaskVoid OnMatchFoundInternal(HashSet<ICell> cells)
         {
-            Debug.Log($"OnMatchFoundInternal");
-
             await DestroyMatch(cells);
             levelStateMachine.SetState<LevelItemsFallingState>();
         }
@@ -58,7 +56,6 @@ namespace Match2.Partial.Gameplay.Level.LevelStates.States
         {
             foreach (var cell in cells)
             {
-                Debug.Log($"Match count {cells.Count}");
                 await Destroy(cell);
             }
         }

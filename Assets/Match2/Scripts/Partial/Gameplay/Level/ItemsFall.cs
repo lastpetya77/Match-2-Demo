@@ -28,8 +28,6 @@ namespace Match2.Partial.Gameplay.Level
         {
             fieldSize = field.Size;
             cells = field.Cells;
-            
-            Debug.Log($"ItemsFall currentLevelData {currentLevelData.LevelIndex}");
         }
         
         public async UniTask Fall()

@@ -17,8 +17,7 @@ namespace Match2.Partial.Installers
 
             // RegisterMessageBroker: Register for IPublisher<T>/ISubscriber<T>, includes async and buffered.
             builder.RegisterMessageBroker<int>(options);
-            
-            builder.RegisterMessageBroker<TestEvent>(options);
+
             builder.RegisterMessageBroker<SelectLevelFrameMessage>(options);
             builder.RegisterMessageBroker<OnCellClickedMessage>(options);
             builder.RegisterMessageBroker<OnMatchFoundMessage>(options);
