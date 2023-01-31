@@ -109,8 +109,6 @@ namespace Match2.Partial.Gameplay.VFX
                 var current = handles.Pop();
                 Addressables.Release(current);
             }
-            
-            Debug.Log($"handles {handles.Count}");
         }
     }
 }

@@ -21,12 +21,13 @@ namespace Match2.Partial.Gameplay.Static
         private void Initialize()
         {
             var firstLevel = CreateTemporaryLevelData();
+            var secondLevel = CreateTemporarySecondLevelData();
 
             Levels = new List<LevelData>();
             LevelsDictionary = new Dictionary<int, LevelData>();
             
             Levels.Add(firstLevel);
-            Levels.Add(firstLevel);
+            Levels.Add(secondLevel);
         }
         
         public LevelData CreateTemporaryLevelData()
@@ -63,7 +64,7 @@ namespace Match2.Partial.Gameplay.Static
 
             return levelData;
         }
-        
+
         private int[,] CreateTemporaryLevelMatrix()
         {
             var matrix = new int[5, 7]
@@ -90,7 +91,70 @@ namespace Match2.Partial.Gameplay.Static
             };
             
             return matrix;
-        }        
+        }
+
+        public LevelData CreateTemporarySecondLevelData()
+        {
+            var cellsMatrix = CreateTemporarySecondLevelMatrix();
+            var colorMatrix = CreateTemporarySecondColorMatrix();
+            
+            var temporaryCellsData = CreateTemporaryCellsData(cellsMatrix);
+            var temporaryItemsData = CreateTemporaryItemsData(colorMatrix);
+            
+            var commonItemsData = CreateCommonItemsData();
+
+            var itemData = new ItemData
+            {
+                Type = ItemType.Default,
+                Color = ItemColor.Blue
+            };
+            
+            var firstGoal = new GoalData
+            {
+                ItemData = itemData,
+                Amount = 5
+            };
+            
+            var goals = new List<GoalData> { firstGoal };
+            var levelData = new LevelData
+            {
+                LevelIndex = 2,
+                Goals = goals,
+                CellsData = temporaryCellsData,
+                ItemsData = temporaryItemsData,
+                CommonItemsData = commonItemsData
+            };
+
+            return levelData;
+        }
+        
+        private int[,] CreateTemporarySecondLevelMatrix()
+        {
+            var matrix = new int[5, 7]
+            {
+                { 0, 0, 0, 0, 0, 0, 2 },
+                { 0, 0, 0, 1, 0, 0, 2 },
+                { 0, 0, 0, 0, 1, 0, 2 },
+                { 0, 0, 0, 0, 0, 0, 2 },
+                { 0, 0, 0, 0, 0, 0, 2 }
+            };
+            
+            return matrix;
+        }
+        
+        private int[,] CreateTemporarySecondColorMatrix()
+        {
+            var matrix = new int[5, 7]
+            {
+                { 3, 4, 3, 4, 2, 3, 0 },
+                { 4, 3, 3, 0, 2, 4, 0 },
+                { 2, 4, 2, 4, 0, 4, 0 },
+                { 2, 2, 2, 4, 2, 2, 0 },
+                { 2, 3, 4, 4, 4, 3, 0 }
+            };
+            
+            return matrix;
+        }
         
         private CellType[,] CreateTemporaryCellsData(int[,] matrix)
         {
